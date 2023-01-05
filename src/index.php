@@ -11,6 +11,21 @@ function lien($url)
     return "<a href=\"$url\">$url</a>";
 }
 
+
+// Vérifie si une chaine se termine par .php
+function endsWithPHP($string)
+{
+    // Récupère la longueur de la chaîne
+    $len = strlen($string);
+
+    // Vérifie si la chaîne se termine par ".php"
+    if ($len >= 4 && substr($string, $len - 4) == '.php') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 // Lit chaque entrée du répertoire
 while (($entry = readdir($dir)) !== false) {
     // Ignore les entrées "." et ".."
@@ -18,7 +33,7 @@ while (($entry = readdir($dir)) !== false) {
         continue;
     }
 
-    if ($entry != 'index.php') {
+    if ($entry != 'index.php' && endsWithPHP($entry)) {
         // Affiche l'entrée
         echo "<li>" . lien($entry) . "<br></li>";
     }
