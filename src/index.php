@@ -18,8 +18,10 @@ while (($entry = readdir($dir)) !== false) {
         continue;
     }
 
-    // Affiche l'entrée
-    echo "<li>" . lien($entry) . "<br></li>";
+    if ($entry != 'index.php') {
+        // Affiche l'entrée
+        echo "<li>" . lien($entry) . "<br></li>";
+    }
 
 }
 
