@@ -1,6 +1,9 @@
 # Docker apache + php + mysql + phpmyadmin
 
 ```bash
+# Copy .env
+cp .env.dist .env
+
 # start
 docker-compose up -d
 

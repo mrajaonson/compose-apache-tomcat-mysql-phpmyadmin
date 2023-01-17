@@ -42,4 +42,19 @@ while (($entry = readdir($dir)) !== false) {
 
 // Ferme le répertoire
 closedir($dir);
-?>
+
+
+$host = "mysql";
+$dbname = "test";
+$username = "root";
+$password = "root";
+
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "<li>Connected successfully<br></li>";
+} catch (PDOException $e) {
+    echo "<li>Connection failed: " . $e->getMessage() . "<br></li>";
+}
+$conn = null;
