@@ -49,9 +49,6 @@ $dbname = $_ENV['MYSQL_DATABASE'];
 $username = $_ENV['MYSQL_USER'];
 $password = $_ENV['MYSQL_PASSWORD'];
 
-echo "<li>" . $_ENV['MYSQL_HOST'] . "<br></li>";
-echo "<li>" . $_ENV['MYSQL_DATABASE'] . "<br></li>";
-
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
