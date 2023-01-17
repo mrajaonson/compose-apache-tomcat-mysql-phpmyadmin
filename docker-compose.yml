@@ -12,6 +12,8 @@ services:
             - default
         environment:
             - PHP_EXTENSION_PDO_MYSQL=yes
+        env_file:
+            -   .env
     mysql:
         image: mysql:8.0
         environment:

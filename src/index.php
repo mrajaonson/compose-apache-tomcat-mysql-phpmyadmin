@@ -44,10 +44,10 @@ while (($entry = readdir($dir)) !== false) {
 closedir($dir);
 
 
-$host = "mysql";
-$dbname = "test";
-$username = "root";
-$password = "root";
+$host = $_ENV['MYSQL_HOST'];
+$dbname = $_ENV['MYSQL_DATABASE'];
+$username = $_ENV['MYSQL_USER'];
+$password = $_ENV['MYSQL_PASSWORD'];
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
