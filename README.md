@@ -4,11 +4,14 @@
 # Copy .env
 cp .env.dist .env
 
+chmod +x start.sh
+chmod +x stop.sh
+
 # start
-docker-compose up -d
+./start.sh
 
 # stop
-docker-compose stop
+./stop.sh
 
 # apache
 # http://localhost:8001
