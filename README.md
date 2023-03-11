@@ -13,6 +13,12 @@ chmod +x stop.sh
 # stop
 ./stop.sh
 
+# list
+docker ps
+
+# run a command
+docker exec -it {docker-name} /bin/bash
+
 # apache
 # http://localhost:8001
 

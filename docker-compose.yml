@@ -1,7 +1,9 @@
 version: "3"
 services:
-    php:
-        build: .
+    apache:
+        build:
+            context: .
+            dockerfile: ./apache/Dockerfile
         ports:
             - "8001:80"
         volumes:
@@ -13,7 +15,8 @@ services:
         environment:
             - PHP_EXTENSION_PDO_MYSQL=yes
         env_file:
-            -   .env
+            - .env
+        container_name: apache
     mysql:
         image: mysql:8.0
         environment:
@@ -28,6 +31,7 @@ services:
             - default
         ports:
             - "3306:3306"
+        container_name: mysql
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         links:
@@ -40,5 +44,12 @@ services:
             PMA_ARBITRARY: 1
             PMA_USER: ${MYSQL_USER}
             PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        container_name: phpmyadmin
+    centos:
+        build:
+            context: .
+            dockerfile: ./centos/Dockerfile
+        command: [ "tail", "-f", "/dev/null" ]
+        container_name: centos
 volumes:
     persistent:
