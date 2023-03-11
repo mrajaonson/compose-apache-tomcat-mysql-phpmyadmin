@@ -1,16 +1,23 @@
-# Docker apache + php + mysql + phpmyadmin
+# Compose apache + mysql + phpmyadmin
 
 ```bash
-# Copy .env
+# 1. clone project
+git clone https://github.com/mrajaonson/compose-apache-mysql-phpmyadmin.git
+
+# 2. change directory
+cd compose-apache-mysql-phpmyadmin
+
+# 3. copy .env
 cp .env.dist .env
 
-chmod +x start.sh
-chmod +x stop.sh
+# 4. change files permissions
+chmod u+x start.sh
+chmod u+x stop.sh
 
-# start
+# 5. start
 ./start.sh
 
-# stop
+# 6. stop
 ./stop.sh
 
 # list
