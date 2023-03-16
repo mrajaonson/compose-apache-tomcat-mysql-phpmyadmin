@@ -45,11 +45,5 @@ services:
             PMA_USER: ${MYSQL_USER}
             PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         container_name: phpmyadmin
-    centos:
-        build:
-            context: .
-            dockerfile: ./centos/Dockerfile
-        command: [ "tail", "-f", "/dev/null" ]
-        container_name: centos
 volumes:
     persistent:
