@@ -7,7 +7,7 @@
 
 ```bash
 # 1. clone project
-git clone https://github.com/mrajaonson/compose-apache-mysql-phpmyadmin.git
+git clone https://github.com/mrajaonson/compose-apache-tomcat-mysql-phpmyadmin.git
 
 # 2. change directory
 cd compose-apache-mysql-phpmyadmin
