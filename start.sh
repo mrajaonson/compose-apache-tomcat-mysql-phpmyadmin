@@ -15,7 +15,7 @@ fi
 # List of docker services
 services=$(docker-compose config --services)
 
-# Docker à lancer
+# Docker to start
 printf "\nEnter the docker service(s) to be started separated by spaces:\n\n"
 
 # Display the docker services

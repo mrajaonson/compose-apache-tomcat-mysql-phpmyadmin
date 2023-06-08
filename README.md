@@ -1,4 +1,9 @@
-# Compose apache + mysql + phpmyadmin
+# Compose apache - tomcat - mysql - phpmyadmin
+
+* php:7.4-apache
+* Tomcat 10.1.51
+* MySQL 8
+* PhpMyAdmin
 
 ```bash
 # 1. clone project
@@ -10,18 +15,11 @@ cd compose-apache-mysql-phpmyadmin
 # 3. copy .env
 cp .env.dist .env
 
-# 4. change files permissions
-chmod u+x start.sh
-chmod u+x stop.sh
-
-# 5. start
+# 4. docker-compose up
 ./start.sh
 
-# 6. stop
+# 5. docker-compose down
 ./stop.sh
-
-# list
-docker ps
 
 # run a command
 docker exec -it {docker-name} /bin/bash

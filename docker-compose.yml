@@ -17,21 +17,30 @@ services:
         env_file:
             - .env
         container_name: apache
+
+    tomcat:
+        image: tomcat:10.1.51
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./webapp:/usr/local/tomcat/webapps
+            - ./webapp/app.war:/usr/local/tomcat/webapps/ROOT.war
+        depends_on:
+            - mysql
+
     mysql:
         image: mysql:8.0
         environment:
-            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - MYSQL_DATABASE=${MYSQL_DATABASE}
-            - MYSQL_USER=${MYSQL_USER}
-            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
         volumes:
-            - ./dump:/docker-entrypoint-initdb.d
             - persistent:/var/lib/mysql
-        networks:
-            - default
         ports:
             - "3306:3306"
         container_name: mysql
+
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         links:
@@ -40,10 +49,8 @@ services:
             - "8000:80"
         environment:
             PMA_HOST: ${MYSQL_HOST}
-            PMA_PORT: 3306
-            PMA_ARBITRARY: 1
-            PMA_USER: ${MYSQL_USER}
-            PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         container_name: phpmyadmin
+
 volumes:
     persistent:
