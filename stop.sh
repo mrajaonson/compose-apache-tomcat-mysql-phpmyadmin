@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Stop docker services
-docker-compose down
+docker compose down

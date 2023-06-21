@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Check if docker is installed
 if ! [ -x "$(command -v docker)" ]; then
@@ -13,7 +13,7 @@ if [ ! -f docker-compose.yml ]; then
 fi
 
 # List of docker services
-services=$(docker-compose config --services)
+services=$(docker compose config --services)
 
 # Docker to start
 printf "\nEnter the docker service(s) to be started separated by spaces:\n\n"
@@ -27,7 +27,7 @@ printf "\n"
 
 read -r input
 
-IFS=' ' read -r -A input_array <<< "$input"
+IFS=' ' read -r -a input_array <<< "$input"
 
 # Start docker services
-docker-compose up -d "${input_array[@]}"
+docker compose up -d "${input_array[@]}"
